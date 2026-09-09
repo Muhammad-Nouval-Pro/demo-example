@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Poppins", sans-serif;
+}
+
+@layer components {
+  .page-container { @apply mx-auto w-full max-w-7xl px-6 md:px-8; }
+  .eyebrow-label { @apply text-xs font-semibold tracking-widest text-[#084d90] uppercase; }
+  .section-title { @apply text-3xl leading-tight font-semibold tracking-tight text-[#102d4a] sm:text-4xl; }
+  .button-primary { @apply inline-flex min-h-11 items-center justify-center rounded-full border border-[#084d90] bg-[#084d90] px-6 py-3 text-sm font-medium text-white transition-colors duration-200 hover:bg-[#063b70] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#084d90]; }
+  .button-secondary { @apply inline-flex min-h-11 items-center justify-center rounded-full border border-[#084d90]/20 bg-white/70 px-6 py-3 text-sm font-medium text-[#084d90] transition-colors duration-200 hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#084d90]; }
+}
+
+a:focus-visible, button:focus-visible, summary:focus-visible {
+  outline: 2px solid #1972b9;
+  outline-offset: 4px;
+}
+
+:root {
+  font-family: var(--font-sans);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+@media (min-width: 721px) {
+  html {
+    scroll-padding-top: 90px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal-on-scroll,
+  .reveal-group > * {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+body {
+  margin: 0;
+  min-width: 320px;
+  overflow-x: hidden;
+}
+button,
+input {
+  font-family: inherit;
+}
+
+/* Scroll & Entrance Animation Utilities */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered Group Animations */
+.reveal-group > * {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-group.revealed > *:nth-child(1) { transition-delay: 0.05s; opacity: 1; transform: translateY(0); }
+.reveal-group.revealed > *:nth-child(2) { transition-delay: 0.15s; opacity: 1; transform: translateY(0); }
+.reveal-group.revealed > *:nth-child(3) { transition-delay: 0.25s; opacity: 1; transform: translateY(0); }
+.reveal-group.revealed > *:nth-child(4) { transition-delay: 0.35s; opacity: 1; transform: translateY(0); }
+.reveal-group.revealed > *:nth-child(5) { transition-delay: 0.45s; opacity: 1; transform: translateY(0); }
+.reveal-group.revealed > *:nth-child(6) { transition-delay: 0.55s; opacity: 1; transform: translateY(0); }
+.reveal-group.revealed > *:nth-child(7) { transition-delay: 0.65s; opacity: 1; transform: translateY(0); }
+.reveal-group.revealed > *:nth-child(8) { transition-delay: 0.75s; opacity: 1; transform: translateY(0); }
+
+/* Initial Hero Animation Keyframes for Page Load */
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-hero-1 { animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards; opacity: 0; }
+.animate-hero-2 { animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards; opacity: 0; }
+.animate-hero-3 { animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards; opacity: 0; }
+.animate-hero-4 { animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.55s forwards; opacity: 0; }
+.animate-hero-5 { animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.7s forwards; opacity: 0; }
+
+/* Continuous Slow Marquee for Logos */
+@keyframes logoScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-logo-scroll {
+  display: flex;
+  width: max-content;
+  animation: logoScroll 35s linear infinite;
+}
+
+.animate-logo-scroll:hover {
+  animation-play-state: paused;
+}
+
+

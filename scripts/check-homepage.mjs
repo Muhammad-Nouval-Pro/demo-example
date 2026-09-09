@@ -1,0 +1,36 @@
+import { chromium } from 'playwright'
+import assert from 'node:assert/strict'
+
+const browser = await chromium.launch({ channel: 'chrome', headless: true })
+const page = await browser.newPage()
+const errors = []
+page.on('pageerror', (error) => errors.push(error.message))
+for (const [width, height] of [[1440, 900], [1366, 768], [768, 1024], [390, 844]]) {
+  await page.setViewportSize({ width, height })
+  await page.goto('http://127.0.0.1:5173/', { waitUntil: 'networkidle' })
+  assert.equal(await page.locator('h1').count(), 1)
+  assert.equal(await page.locator('a[href]').evaluateAll((links) => links.filter((link) => new URL(link.href).origin !== location.origin).length), 0, 'Links must stay on this project')
+  assert.equal(await page.locator('a[target="_blank"]').count(), 0)
+  assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true, `Overflow at ${width}`)
+  const missing = await page.locator('a[href^="#"]').evaluateAll((links) => links.map((link) => link.getAttribute('href')).filter((href) => href.length > 1 && !document.getElementById(href.slice(1))))
+  assert.deepEqual(missing, [], `Missing anchors at ${width}`)
+  const solutions = page.getByRole('button', { name: 'Solutions', exact: true })
+  await solutions.hover()
+  await page.waitForTimeout(350)
+  await assert.doesNotReject(() => page.locator('#solutions-mega-menu').waitFor({ state: 'visible' }))
+  await solutions.click()
+  assert.equal(await solutions.getAttribute('aria-expanded'), 'true')
+  await page.keyboard.press('Escape')
+  assert.equal(await solutions.getAttribute('aria-expanded'), 'false')
+  await page.getByRole('button', { name: 'Find knowledge faster' }).click()
+  await page.getByRole('button', { name: 'Simplify everyday workflows' }).click()
+  assert.equal(await page.getByRole('button', { name: 'Simplify everyday workflows' }).getAttribute('aria-expanded'), 'true')
+  await page.getByRole('link', { name: 'Talk to an AI expert', exact: true }).click()
+  await page.waitForTimeout(700)
+  assert.equal(new URL(page.url()).hash, '#contact')
+  await page.goto('http://127.0.0.1:5173/')
+  await page.screenshot({ path: `artifacts/homepage-${width}.png`, fullPage: true })
+  console.log(`PASS ${width}: layout, anchors, dropdown, use cases, contact`)
+}
+assert.deepEqual(errors, [])
+await browser.close()
