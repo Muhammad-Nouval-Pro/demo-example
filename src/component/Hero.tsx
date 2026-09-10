@@ -16,8 +16,8 @@ function Hero() {
           Connect AI, data, and cloud to the way your business works. Bring your next idea to life with iZeno’s enterprise technology and delivery expertise.
         </p>
         <div className="mt-8 flex flex-col sm:flex-row sm:items-center gap-4 animate-hero-4">
-          <HomepageLink href="#contact" className="button-primary w-full sm:w-auto text-center">Talk to an AI expert</HomepageLink>
-          <HomepageLink href="#solutions" className="button-secondary w-full sm:w-auto text-center">Explore solutions</HomepageLink>
+          <HomepageLink href="/contact-us" className="button-primary w-full sm:w-auto text-center">Talk to an AI expert</HomepageLink>
+          <HomepageLink href="/solutions" className="button-secondary w-full sm:w-auto text-center">Explore solutions</HomepageLink>
         </div>
         <p className="mt-7 text-xs font-medium text-[#39546c] animate-hero-5">
           A Logicalis company • Enterprise integration • Regional delivery

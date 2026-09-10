@@ -1,5 +1,5 @@
 import HomepageLink from './HomepageLink'
-import footerLogo from '../assets/images/izenologo.png'
+import footerLogo from '../assets/images/iZeno_Logo_Reverse_logicalis.png'
 import { companyItems, industryItems, solutionGroups, navigationHref } from './navigationData'
 
 const linkStyle = 'text-sm leading-relaxed text-slate-400 transition-colors duration-200 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-300'
@@ -16,8 +16,8 @@ function Footer() {
       <div className="mx-auto max-w-7xl min-[721px]:px-8">
         <div className="grid gap-12 pb-14 sm:grid-cols-2 lg:grid-cols-[1.2fr_1fr_1fr_1.2fr] lg:gap-10">
           <div>
-            <HomepageLink href="#home" aria-label="iZeno home" className="inline-block rounded-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-300">
-              <img src={footerLogo} alt="iZeno, a Logicalis company" loading="lazy" className="h-auto w-36 brightness-0 invert" />
+            <HomepageLink href="/" aria-label="iZeno home" className="inline-block rounded-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-300">
+              <img src={footerLogo} alt="iZeno, a Logicalis company" loading="lazy" className="h-auto w-36" />
             </HomepageLink>
             <p className="mt-5 max-w-64 text-sm leading-7 text-slate-400">Business expertise. Technology that moves you forward.</p>
             <nav aria-label="Social media" className="mt-6 flex gap-3">
@@ -44,8 +44,8 @@ function Footer() {
               ))}
             </ul>
             <div className="mt-7 flex flex-col items-start gap-4 border-t border-white/10 pt-6">
-              <HomepageLink href="#generative-ai" className={linkStyle}>Generative AI</HomepageLink>
-              <HomepageLink href="#services" className={linkStyle}>Services</HomepageLink>
+              <HomepageLink href="/generative-ai" className={linkStyle}>Generative AI</HomepageLink>
+              <HomepageLink href="/services" className={linkStyle}>Services</HomepageLink>
             </div>
           </nav>
 
@@ -65,7 +65,7 @@ function Footer() {
         </div>
         <div className="flex flex-col items-start justify-between gap-4 border-t border-white/10 py-7 sm:flex-row sm:items-center">
           <p className="text-xs leading-relaxed text-slate-400">© {new Date().getFullYear()} iZeno. A Logicalis company. All rights reserved.</p>
-          <HomepageLink href="#home" className={linkStyle}>Back to top</HomepageLink>
+          <HomepageLink href="/" className={linkStyle}>Back to top</HomepageLink>
         </div>
       </div>
     </footer>

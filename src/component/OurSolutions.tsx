@@ -1,32 +1,26 @@
 import HomepageLink from './HomepageLink'
-import smallImage3 from '../assets/images/optimized/solutions (3)-480.webp'
-import smallImage2 from '../assets/images/optimized/solutions (2)-480.webp'
-import smallImage1 from '../assets/images/optimized/solutions (1)-480.webp'
 import { industryItems, navigationHref } from './navigationData'
-import businessImage from '../assets/images/optimized/solutions (1)-800.webp'
-import technologyImage from '../assets/images/optimized/solutions (2)-800.webp'
-import industryImage from '../assets/images/optimized/solutions (3)-800.webp'
+import businessImage from '../assets/images/business-solution.jpg'
+import technologyImage from '../assets/images/teknologi-solution.jpg'
+import industryImage from '../assets/images/industri-solution.jpg'
 
 const solutions = [
   {
     title: 'Business Solutions',
     image: businessImage,
-    smallImage: smallImage1,
-    href: '#business-solutions',
+    href: '/solutions/business-solutions',
     description: 'Connect processes, customers, and data with CRM, automation, and analytics for more efficient business operations.',
   },
   {
     title: 'Technology Solutions',
     image: technologyImage,
-    smallImage: smallImage2,
-    href: '#technology-solutions',
+    href: '/solutions/technology-solutions',
     description: 'Build a stronger IT foundation with DevOps, service management, and hybrid cloud to support your business growth.',
   },
   {
     title: 'Industry Solutions',
     image: industryImage,
-    smallImage: smallImage3,
-    href: '#industry',
+    href: '/solutions/industry-solutions',
     description: 'Meet industry needs with specialized solutions and certified consultants who bring best practices into your operations.',
   },
 ]
@@ -44,7 +38,7 @@ function OurSolutions() {
           {solutions.map((solution) => (
             <article key={solution.title} className="overflow-hidden rounded-3xl border border-white/80 bg-white/60 shadow-[0_6px_24px_rgba(16,45,74,0.04)] hover:shadow-lg transition-shadow duration-300">
               <div className="group overflow-hidden">
-                <img src={solution.image} srcSet={`${solution.smallImage} 480w, ${solution.image} 800w`} sizes="(min-width: 768px) 33vw, 100vw" alt="" loading="lazy" width={1122} height={1402} className="aspect-[16/9] w-full object-cover object-center transition-transform duration-500 group-hover:scale-105 motion-reduce:transform-none motion-reduce:transition-none" />
+                <img src={solution.image} alt={solution.title} loading="lazy" width={1122} height={1402} className="aspect-[16/9] w-full object-cover object-center transition-transform duration-500 group-hover:scale-105 motion-reduce:transform-none motion-reduce:transition-none" />
               </div>
               <div className="p-6 lg:p-7">
                 <h3 className="mb-4 text-xl font-semibold tracking-tight">{solution.title}</h3>

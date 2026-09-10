@@ -64,7 +64,7 @@ function Navbar() {
       <nav className="mx-auto flex h-14 max-w-7xl items-center justify-between gap-4 rounded-full border border-white/70 bg-[#e4f1fa]/40 py-2 px-4 shadow-[0_8px_32px_rgba(38,85,120,0.12),inset_0_1px_rgba(255,255,255,0.8)] backdrop-blur-xl min-[850px]:h-16 min-[850px]:px-6" aria-label="Main navigation">
         
         {/* Logo */}
-        <HomepageLink className="inline-flex shrink-0 items-center" href="#home" aria-label="izeno home">
+        <HomepageLink className="inline-flex shrink-0 items-center" href="/" aria-label="izeno home">
           <img className="block h-7 w-auto min-[850px]:h-8" src={logo} alt="izeno" />
         </HomepageLink>
 
@@ -109,7 +109,7 @@ function Navbar() {
         <div className="flex items-center gap-2">
           <HomepageLink
             className="group hidden min-[850px]:inline-flex h-10 items-center justify-center whitespace-nowrap rounded-full border border-white/50 bg-[#084d90] px-5 text-sm font-semibold text-white shadow-xs transition-all duration-300 hover:bg-[#063b70]"
-            href="#contact"
+            href="/contact-us"
           >
             Get in Touch
             <span aria-hidden="true" className="ml-1 transition-transform duration-300 group-hover:translate-x-0.5">→</span>
@@ -229,7 +229,7 @@ function Navbar() {
           {/* Action CTA Button inside Mobile Drawer */}
           <div className="mt-5 pt-3 border-t border-[#102d4a]/10">
             <HomepageLink
-              href="#contact"
+              href="/contact-us"
               onClick={() => setMobileNavOpen(false)}
               className="flex w-full h-11 items-center justify-center rounded-full bg-[#084d90] px-5 text-sm font-semibold text-white shadow-md transition-colors hover:bg-[#063b70]"
             >
